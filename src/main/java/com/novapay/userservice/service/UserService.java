@@ -4,6 +4,7 @@ import com.novapay.userservice.dto.request.KycRequest;
 import com.novapay.userservice.dto.request.UpdateUserRequest;
 import com.novapay.userservice.dto.request.UserRequest;
 import com.novapay.userservice.dto.response.UserAuthResponse;
+import com.novapay.userservice.dto.response.UserContactResponse;
 import com.novapay.userservice.dto.response.UserResponse;
 
 public interface UserService {
@@ -21,5 +22,7 @@ public interface UserService {
     void verifyKyc(Long  userId);
 
     UserAuthResponse getUserForAuth(String email);
+
+    UserContactResponse getUserContact(Long userId);
 
 }

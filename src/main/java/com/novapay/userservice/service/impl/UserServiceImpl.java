@@ -6,6 +6,7 @@ import com.novapay.userservice.dto.request.KycRequest;
 import com.novapay.userservice.dto.request.UpdateUserRequest;
 import com.novapay.userservice.dto.request.UserRequest;
 import com.novapay.userservice.dto.response.UserAuthResponse;
+import com.novapay.userservice.dto.response.UserContactResponse;
 import com.novapay.userservice.dto.response.UserResponse;
 import com.novapay.userservice.entity.User;
 import com.novapay.userservice.entity.enums.Role;
@@ -119,5 +120,20 @@ public class UserServiceImpl implements UserService {
                 user.getPassword(),
                 user.getRole().name(),
                 user.isEnabled());
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public UserContactResponse getUserContact(Long userId) {
+
+        LOGGER.info("Fetching contact details for user {}", userId);
+
+        User user = userHelper.findUser(userId);
+
+        return new UserContactResponse(
+                user.getId(),
+                user.getEmail(),
+                user.getMobileNumber(),
+                user.getFullName());
     }
 }

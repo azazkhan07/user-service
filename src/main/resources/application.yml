@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: user-service
+
+  config:
+    import: "configserver:http://localhost:8089/"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: "User Service"
+    description: "User Management Service"
+    version: "1.0"
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
